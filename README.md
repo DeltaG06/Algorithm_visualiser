@@ -1,4 +1,4 @@
-# Algorithm Visualizer
+# Algorithm Visualiser
 
 A high-fidelity, interactive, Java Swing application built with a "Sci-Fi/Hacker" aesthetic for visualizing sorting and searching algorithms.
 
