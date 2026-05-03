@@ -125,11 +125,38 @@ public class MainFrame extends JFrame {
 
         // --- Central Visualization Panel ---
         visualizerPanel = new VisualizerPanel();
-        add(visualizerPanel, BorderLayout.CENTER);
 
         // --- East Code Panel ---
         codePanel = new CodePanel();
-        add(codePanel, BorderLayout.EAST);
+
+        // --- Draggable Split Pane ---
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, visualizerPanel, codePanel);
+        splitPane.setResizeWeight(1.0); // Extra space goes to the visualizer panel
+        splitPane.setContinuousLayout(true);
+        splitPane.setDividerSize(6); // Thicker divider to make it easily grab-able
+        splitPane.setBorder(BorderFactory.createEmptyBorder());
+
+        // Custom UI for the split pane divider to match the dark theme
+        splitPane.setUI(new javax.swing.plaf.basic.BasicSplitPaneUI() {
+            @Override
+            public javax.swing.plaf.basic.BasicSplitPaneDivider createDefaultDivider() {
+                return new javax.swing.plaf.basic.BasicSplitPaneDivider(this) {
+                    @Override
+                    public void paint(Graphics g) {
+                        g.setColor(new Color(30, 30, 40));
+                        g.fillRect(0, 0, getSize().width, getSize().height);
+                        
+                        // Draw vertical grab handles
+                        g.setColor(new Color(100, 100, 120));
+                        int midY = getSize().height / 2;
+                        g.drawLine(2, midY - 10, 2, midY + 10);
+                        g.drawLine(4, midY - 10, 4, midY + 10);
+                    }
+                };
+            }
+        });
+
+        add(splitPane, BorderLayout.CENTER);
 
         // --- South Panel (Summary + Status) ---
         JPanel southPanel = new JPanel(new BorderLayout());
