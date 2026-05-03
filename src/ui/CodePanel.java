@@ -112,8 +112,8 @@ public class CodePanel extends JPanel {
         codeArea = new JTextArea();
         codeArea.setEditable(false);
         codeArea.setBackground(new Color(15, 15, 18));
-        codeArea.setForeground(new Color(255, 60, 80)); // Neon Red
-        codeArea.setCaretColor(new Color(255, 60, 80)); 
+        codeArea.setForeground(new Color(255, 42, 112)); // Neon Pink
+        codeArea.setCaretColor(new Color(255, 42, 112)); 
         codeArea.setFont(new Font("Consolas", Font.PLAIN, 14));
         codeArea.setBorder(new EmptyBorder(12, 14, 12, 14));
         codeArea.setHighlighter(null);
