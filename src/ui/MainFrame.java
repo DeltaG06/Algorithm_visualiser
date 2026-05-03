@@ -32,7 +32,7 @@ public class MainFrame extends JFrame {
     private Thread sortingThread;
 
     public MainFrame() {
-        setTitle("ALGORITHM VISUALIZER");
+        setTitle("ALGORITHM VISUALISER");
         setSize(1280, 780);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -86,7 +86,7 @@ public class MainFrame extends JFrame {
                 g2.setFont(new Font("Monospaced", Font.BOLD, 42));
                 
                 // White glow effect behind title
-                String title = "ALGORITHM VISUALIZER";
+                String title = "ALGORITHM VISUALISER";
                 FontMetrics fm = g2.getFontMetrics();
                 int tx = 30;
                 int ty = 60;

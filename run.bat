@@ -1,5 +1,5 @@
 @echo off
-echo Compiling Algorithm Visualizer...
+echo Compiling Algorithm Visualiser...
 javac -encoding UTF-8 -cp "lib/*" --release 8 -d out src\Main.java src\ui\*.java src\algorithms\*.java src\db\*.java
 if %errorlevel% neq 0 (
     echo COMPILATION FAILED!
