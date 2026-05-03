@@ -96,6 +96,16 @@ public class ControlPanel extends JPanel {
                 popup.setBorder(BorderFactory.createLineBorder(new Color(50, 50, 70)));
                 return popup;
             }
+
+            @Override
+            public void paintCurrentValueBackground(Graphics g, Rectangle bounds, boolean hasFocus) {
+                Graphics2D g2 = (Graphics2D) g;
+                // Draw translucent neon pink over dark background
+                g2.setColor(new Color(18, 18, 22));
+                g2.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
+                g2.setColor(new Color(255, 42, 112, 150)); // Translucent neon pink
+                g2.fillRect(bounds.x, bounds.y, bounds.width, bounds.height);
+            }
         });
 
         algorithmDropdown.setRenderer(new DefaultListCellRenderer() {
@@ -103,6 +113,15 @@ public class ControlPanel extends JPanel {
             public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
                 JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
                 String text = (value != null) ? value.toString() : "";
+                
+                if (index == -1) {
+                    // This is the selected item displayed in the combobox itself
+                    label.setOpaque(false);
+                    label.setForeground(Color.BLACK);
+                    label.setFont(new Font("Monospaced", Font.BOLD, 14));
+                    label.setBorder(new EmptyBorder(6, 10, 6, 10));
+                    return label;
+                }
                 
                 if (text.startsWith("\u2500")) {
                     // Category separator — smaller, dimmer, centered
